@@ -1,0 +1,13 @@
+{
+  "name": "brochot-maxime-devoir-api-port-russel",
+  "version": "1.0.0",
+  "description": "API REST pour le projet de Port Russel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "Maxime Brochot",
+  "license": "ISC"
+}
