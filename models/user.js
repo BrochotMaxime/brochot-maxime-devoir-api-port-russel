@@ -6,8 +6,8 @@ const User = new Schema({
       type: String,
       required: [true, "Le nom d'utilisateur est requis"],
       trim: true,
-      minlength: [3, 'Le nom utilisateur doit contenir au moins 3 caractères'],
-      maxlength: [50, 'Le nom utilisateur ne doit pas dépasser 50 caractères']
+      minlength: [3, "Le nom utilisateur doit contenir au moins 3 caractères"],
+      maxlength: [50, "Le nom utilisateur ne doit pas dépasser 50 caractères"]
     },
     email: {
       type: String,
@@ -15,12 +15,12 @@ const User = new Schema({
       unique: true,
       trim: true,
       lowercase: true,
-      match: [/^\S+@\S+\.\S+$/, 'Adresse e-mail invalide']
+      match: [/^\S+@\S+\.\S+$/, "Adresse e-mail invalide"]
     },
     password: {
       type: String,
-      required: [true, 'Le mot de passe est requis'],
-      minlength: [8, 'Le mot de passe doit contenir au moins 8 caractères']
+      required: [true, "Le mot de passe est requis"],
+      minlength: [8, "Le mot de passe doit contenir au moins 8 caractères"]
     }
   }, {
     timestamps: true
