@@ -1,31 +1,32 @@
 {
-  "name": "brochot-maxime-devoir-api-port-russel",
-  "version": "1.0.0",
-  "description": "API REST pour le projet de Port Russel",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "Maxime Brochot",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "connect-mongo": "^6.0.0",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.1",
-    "ejs": "^5.0.1",
-    "express": "^5.2.1",
-    "express-session": "^1.19.0",
-    "express-validator": "^7.3.2",
-    "method-override": "^3.0.0",
-    "mongoimport": "^1.0.6",
-    "mongoose": "^9.4.1",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+        "name": "brochot-maxime-devoir-api-port-russel",
+        "version": "1.0.0",
+        "description": "API REST pour le projet de Port Russel",
+        "main": "server.js",
+        "scripts": {
+                "start": "node server.js",
+                "dev": "nodemon server.js",
+                "create-admin": "node scripts/createAdmin.js"
+        },
+        "keywords": [],
+        "author": "Maxime Brochot",
+        "license": "ISC",
+        "dependencies": {
+                "bcrypt": "^6.0.0",
+                "connect-mongo": "^6.0.0",
+                "cors": "^2.8.6",
+                "dotenv": "^17.4.1",
+                "ejs": "^5.0.1",
+                "express": "^5.2.1",
+                "express-session": "^1.19.0",
+                "express-validator": "^7.3.2",
+                "method-override": "^3.0.0",
+                "mongoimport": "^1.0.6",
+                "mongoose": "^9.4.1",
+                "swagger-jsdoc": "^6.2.8",
+                "swagger-ui-express": "^5.0.1"
+        },
+        "devDependencies": {
+                "nodemon": "^3.1.14"
   }
 }
