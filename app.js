@@ -6,6 +6,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
 const authRoutes = require('./routes/auth');
+const { isAuthenticated } = require('./middlewares/authMiddleware');
 
 const app = express();
 
@@ -44,7 +45,7 @@ app.use((req, res, next) => {
 /* Routes */
 app.use('/', authRoutes);
 
-/* Route de test */
+/* Routes de test */
 app.get('/', (req, res) => {
         res.render('home', {
                 title: 'Bienvenue sur l\'API de Port Russel',
@@ -52,12 +53,12 @@ app.get('/', (req, res) => {
         });
 });
 
-/* Route pour la tableau de bord */
-app.get('/dashboard', (req, res) => {
-        if (!req.session.user) {
-                return res.redirect('/');
-        }
+app.get('/private-test', isAuthenticated, (req, res) => {
+        res.send('Accès autorisé à la zone privée');
+});
 
+/* Route pour la tableau de bord */
+app.get('/dashboard',isAuthenticated, (req, res) => {
         res.render('dashboard', {
                 title: 'Dashboard'
         });
