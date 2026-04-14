@@ -12,28 +12,28 @@ const createAdmin = async () => {
 
                 const existingUser = await User.findOne({ email: 'admin@port-russell.com' });
 
-        if (existingUser) {
-                console.log("L'utilisateur admin existe déjà.");
+                if (existingUser) {
+                        console.log("L'utilisateur admin existe déjà.");
+                        await mongoose.connection.close();
+                        return;
+                }
+
+                const hashedPassword = await bcrypt.hash('Admin1234!', 10);
+
+                const admin = new User({
+                        username: 'admin',
+                        email: 'admin@port-russell.com',
+                        password: hashedPassword
+                });
+
+                await admin.save();
+
+                console.log('Utilisateur administrateur créé avec succès.');
+                console.log('Email : admin@port-russell.com');
+                console.log('Mot de passe : Admin1234!');
+
                 await mongoose.connection.close();
                 return;
-        }
-
-        const hashedPassword = await bcrypt.hash('Admin1234!', 10);
-
-        const admin = new User({
-                username: 'admin',
-                email: 'admin@port-russell.com',
-                password: hashedPassword
-        });
-
-        await admin.save();
-
-        console.log('Utilisateur administrateur créé avec succès.');
-        console.log('Email : admin@port-russell.com');
-        console.log('Mot de passe : Admin1234!');
-
-        await mongoose.connection.close();
-        return;
 
         } catch (error) {
                 console.error("Erreur lors de la création de l'utilisateur admin :", error);

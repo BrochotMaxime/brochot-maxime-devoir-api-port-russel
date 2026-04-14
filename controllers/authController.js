@@ -37,6 +37,7 @@ exports.login = async (req, res) => {
                         email: user.email
                 };
 
+                console.log('Login réussi, redirection vers /dashboard');
                 return res.redirect('/dashboard');
 
         } catch (error) {

@@ -5,6 +5,8 @@ const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
+const authRoutes = require('./routes/auth');
+
 const app = express();
 
 /* Configuration du moteur de modèles EJS */
@@ -39,30 +41,26 @@ app.use((req, res, next) => {
         next();
 });
 
+/* Routes */
+app.use('/', authRoutes);
+
 /* Route de test */
 app.get('/', (req, res) => {
         res.render('home', {
-                title: 'Bienvenue sur l\'API de Port Russel'
+                title: 'Bienvenue sur l\'API de Port Russel',
+                error: null
         });
 });
 
-/* Route test pour créer une session */
-app.get('/create-session', (req, res) => {
-        req.session.user = {
-                username: 'admin',
-                email: 'admin@port-russell.com'
-        };
-
-        res.send('Session créée');
-});
-
-/* Route test pour vérifier la session */
-app.get('/check-session', (req, res) => {
-        if (req.session.user) {
-                res.json({ username: req.session.user.username, email: req.session.user.email });
-        } else {
-                res.status(401).json({ error: 'Utilisateur non connecté' });
+/* Route pour la tableau de bord */
+app.get('/dashboard', (req, res) => {
+        if (!req.session.user) {
+                return res.redirect('/');
         }
+
+        res.render('dashboard', {
+                title: 'Dashboard'
+        });
 });
 
 module.exports = app;
