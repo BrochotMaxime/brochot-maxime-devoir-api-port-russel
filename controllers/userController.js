@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-
 exports.getAllUsers = async (req, res) => {
         try {
                 const users = await User.find().select('-password').sort({ username: 1 });
