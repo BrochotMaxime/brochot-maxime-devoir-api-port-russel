@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo').default;
 const authRoutes = require('./routes/auth');
 const { isAuthenticated } = require('./middlewares/authMiddleware');
 const userRoutes = require('./routes/users');
+const catwayRoutes = require('./routes/catways');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 /* Routes */
 app.use('/', authRoutes);
 app.use('/users', userRoutes);
+app.use('/catways', catwayRoutes);
 
 /* Routes de test */
 app.get('/', (req, res) => {
