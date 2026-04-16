@@ -15,7 +15,7 @@ exports.getAllCatways = async (req, res) => {
 exports.getCatwayById = async (req, res) => {
         try {
                 const catway = await Catway.findOne({
-                        catwayNumber: Number(req.params.id)
+                        catwayNumber: req.params.id
                 });
 
                 if (!catway) {
@@ -33,12 +33,6 @@ exports.getCatwayById = async (req, res) => {
 exports.createCatway = async (req, res) => {
         try {
                 const { catwayNumber, catwayType, catwayState } = req.body;
-
-                if (catwayNumber === undefined || !catwayType || !catwayState) {
-                        return res.status(400).json({
-                                error: 'catwayNumber, catwayType et catwayState sont requis'
-                        });
-                }
 
                 const existingCatway = await Catway.findOne({
                         catwayNumber: Number(catwayNumber)
@@ -71,12 +65,6 @@ exports.updateCatway = async (req, res) => {
         try {
                 const { catwayState } = req.body;
 
-                if (!catwayState) {
-                        return res.status(400).json({
-                                error: 'catwayState est requis pour la mise à jour'
-                        });
-                }
-
                 const catway = await Catway.findOne({
                         catwayNumber: Number(req.params.id)
                 });
@@ -102,7 +90,7 @@ exports.updateCatway = async (req, res) => {
 exports.deleteCatway = async (req, res) => {
         try {
                 const deletedCatway = await Catway.findOneAndDelete({
-                        catwayNumber: Number(req.params.id)
+                        catwayNumber: req.params.id
                 });
 
                 if (!deletedCatway) {
