@@ -34,10 +34,6 @@ exports.createUser = async (req, res) => {
         try {
                 const { username, email, password } = req.body;
 
-                if (!username || !email || !password) {
-                        return res.status(400).json({ error: 'username, email et password sont requis' });
-                }
-
                 const existingUser = await User.findOne({ email: email.toLowerCase() });
 
                 if (existingUser) {
