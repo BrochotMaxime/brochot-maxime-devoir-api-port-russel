@@ -41,6 +41,8 @@ app.use(session({
 app.use((req, res, next) => {
         res.locals.user = req.session.user || null;
         res.locals.currentDate = new Date().toLocaleDateString('fr-FR');
+        res.locals.error = null;
+        res.locals.success = null;
         next();
 });
 
@@ -53,7 +55,8 @@ app.use('/catways', catwayRoutes);
 app.get('/', (req, res) => {
         res.render('home', {
                 title: 'Bienvenue sur l\'API de Port Russel',
-                error: null
+                error: null,
+                success: null
         });
 });
 
