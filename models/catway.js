@@ -22,9 +22,9 @@ const Catway = new Schema({
                 trim: true,
                 lowercase: true
         },
-                catwayState: {
-                        type: String,
-                        required: [true, "L'état du catway est requis"],
+        catwayState: {
+                type: String,
+                required: [true, "L'état du catway est requis"],
                 trim: true,
                 minlength: [3, "L'état du catway doit contenir au moins 3 caractères"],
                 maxlength: [500, "L'état du catway ne doit pas dépasser 500 caractères"]
@@ -34,4 +34,4 @@ const Catway = new Schema({
         }
 );
 
-module.exports = mongoose.model('Catway', Catway);
+module.exports = mongoose.models.Catway || mongoose.model('Catway', Catway);

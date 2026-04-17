@@ -1,0 +1,13 @@
+<nav>
+        <ul>
+                <li><a href="/">Accueil</a></li>
+
+                <% if (user) { %>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/users">Utilisateurs</a></li>
+                        <li><a href="/catways">Catways</a></li>
+                        <li><a href="/logout">Déconnexion</a></li>
+                <% } %>
+        </ul>
+</nav>
+<hr>
