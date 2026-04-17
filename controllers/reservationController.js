@@ -49,6 +49,18 @@ exports.createReservation = async (req, res) => {
                         return res.status(404).json({ error: 'Catway introuvable' });
                 }
 
+                const overlappingReservation = await Reservation.findOne({
+                        catwayNumber,
+                        startDate: { $lt: new Date(endDate) },
+                        endDate: { $gt: new Date(startDate) }
+                });
+
+                if (overlappingReservation) {
+                        return res.status(409).json({
+                                error: 'Une réservation existe déjà sur cette période pour ce catway'
+                        });
+                }
+
                 const newReservation = await Reservation.create({
                         catwayNumber,
                         clientName,
@@ -85,6 +97,34 @@ exports.updateReservation = async (req, res) => {
 
                 if (!reservation) {
                         return res.status(404).json({ error: 'Réservation introuvable' });
+                }
+
+                let finalStartDate = reservation.startDate;
+                let finalEndDate = reservation.endDate;
+
+                if (startDate) {
+                        finalStartDate = new Date(startDate);
+                }
+
+                if (endDate) {
+                        finalEndDate = new Date(endDate);
+                }
+                
+                if (finalStartDate >= finalEndDate) {
+                        return res.status(400).json({ error: 'La date de fin doit être postérieure à la date de début' });
+                }
+
+                const overlappingReservation = await Reservation.findOne({
+                        _id: { $ne: reservationId },
+                        catwayNumber,
+                        startDate: { $lt: finalEndDate },
+                        endDate: { $gt: finalStartDate }
+                });
+
+                if (overlappingReservation) {
+                        return res.status(409).json({
+                                error: 'Une réservation existe déjà sur cette période pour ce catway'
+                        });
                 }
 
                 if (clientName) reservation.clientName = clientName;
