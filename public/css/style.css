@@ -81,3 +81,27 @@ button {
 button:hover {
         background-color: #0a2a4c;
 }
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+}
+
+table, th, td {
+        border: 1px solid #ccc;
+}
+
+th, td {
+        padding: 0.5rem;
+        text-align: left;
+}
+
+th {
+        background-color: #0d3b66;
+        color: #fff;
+}
+
+tr:nth-child(even) {
+        background-color: #f9f9f9;
+}
