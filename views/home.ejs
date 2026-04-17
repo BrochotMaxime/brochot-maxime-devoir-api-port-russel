@@ -3,24 +3,33 @@
 <%- include('partials/head') %>
 <body>
         <%- include('partials/nav') %>
-
-        <h1><%= title %></h1>
-        <p>Voici l'application de gestion des catways et des réservations.</p>
-
-        <%- include('partials/messages') %>
-
-        <form action="/login" method="POST">
-                <div>
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" name="email" required />
-                </div>
-
-                <div>
-                        <label for="password">Mot de passe :</label>
-                        <input type="password" id="password" name="password" required />
-                </div>
-
-                <button type="submit">Se connecter</button>
-        </form>
+        <main>
+                <h1><%= title %></h1>
+                <section>
+                        <h2>Présentation</h2>
+                        <p>Cette API permet à la capitainerie du port de Russell de gérer les catways, les réservations et les utilisateurs.</p>
+                        <p>Elle propose une API privée en Node.js, Express et MongoDB, avec une interface simple pour administrer les données.</p>
+                </section>
+                <section>
+                        <h2>Connexion</h2>
+                        <%- include('partials/messages') %>
+                        <form action="/login" method="POST">
+                                <div>
+                                        <label for="email">Email :</label>
+                                        <input type="email" id="email" name="email" required />
+                                </div>
+                                <div>
+                                        <label for="password">Mot de passe :</label>
+                                        <input type="password" id="password" name="password" required />
+                                </div>
+                                <button type="submit">Se connecter</button>
+                        </form>
+                </section>
+                <section>
+                        <h2>Documentation</h2>
+                        <p>Consultez la documentation de l'API pour savoir comment l'utiliser.</p>
+                        <p><a href="/api-docs">Voir la documentation</a></p>
+                </section>
+        </main>
 </body>
 </html>
