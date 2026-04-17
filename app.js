@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth');
 const { isAuthenticated } = require('./middlewares/authMiddleware');
 const userRoutes = require('./routes/users');
 const catwayRoutes = require('./routes/catways');
+const Reservation = require('./models/reservation');
 
 const app = express();
 
@@ -65,10 +66,23 @@ app.get('/private-test', isAuthenticated, (req, res) => {
 });
 
 /* Route pour la tableau de bord */
-app.get('/dashboard',isAuthenticated, (req, res) => {
-        res.render('dashboard', {
-                title: 'Dashboard'
-        });
+app.get('/dashboard',isAuthenticated, async (req, res) => {
+        try {
+                const today = new Date();
+                const currentReservations = await Reservation.find({
+                        startDate: { $lte: today },
+                        endDate: { $gte: today }
+                });
+                res.render('dashboard', {
+                        title: 'Dashboard',
+                        currentReservations: currentReservations
+                });
+        } catch (error) {
+                console.error('Erreur lors de la récupération des réservations :', error);
+                res.status(500).render('error', { title: 'Erreur', message: 'Une erreur est survenue lors de la récupération des réservations.' });
+                return;
+        }
+        
 });
 
 module.exports = app;

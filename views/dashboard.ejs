@@ -4,17 +4,46 @@
 <body>
         <%- include('partials/nav') %>
 
-        <h1><%= title %></h1>
+        <main>
+                <h1><%= title %></h1>
 
-        <% if (user) { %>
-                <p>Bienvenue <strong><%= user.username %></strong></p>
-                <p>Email : <%= user.email %></p>
-        <% } %>
-
-        <p>Voici le tableau de bord de l'administrateur.</p>
-
-        <p>Date du jour : <%= currentDate %></p>
-
-        <p><a href="/logout">Se déconnecter</a></p>
+                <% if (user) { %>
+                        <section>
+                                <h2>Informations de l'utilisateur</h2>
+                                <p>Nom : <%= user.name %></p>
+                                <p>Email : <%= user.email %></p>
+                                <p>Date du jour : <%= currentDate %></p>
+                        </section>
+                <% } %>
+                <section>
+                        <h2>Réservations en cours</h2>
+                        <% if (currentReservations.length > 0) { %>
+                                <table>
+                                        <thead>
+                                                <tr>
+                                                        <th>Catway</th>
+                                                        <th>Client</th>
+                                                        <th>Bateau</th>
+                                                        <th>Date de début</th>
+                                                        <th>Date de fin</th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <% currentReservations.forEach(reservation => { %>
+                                                        <tr>
+                                                                <td><%= reservation.catwayNumber %></td>
+                                                                <td><%= reservation.clientName %></td>
+                                                                <td><%= reservation.boatName %></td>
+                                                                <td><%= new Date(reservation.startDate).toLocaleString() %></td>
+                                                                <td><%= new Date(reservation.endDate).toLocaleString() %></td>
+                                                        </tr>
+                                                <% }) %>
+                                        </tbody>
+                                </table>
+                        <% } else { %>
+                                <p>Aucune réservation en cours.</p>
+                        <% } %>
+                </section>
+        </main>
 </body>
 </html>
