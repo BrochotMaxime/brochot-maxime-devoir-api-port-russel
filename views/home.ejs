@@ -11,6 +11,16 @@
                         <p>Elle propose une API privée en Node.js, Express et MongoDB, avec une interface simple pour administrer les données.</p>
                 </section>
                 <section>
+                        <% if (user) { %>
+                                <% if (user.name) { %>
+                                <h3>Bienvenue, <%= user.name %> ! Vous êtes connecté.</h3>
+                                <% } else { %>
+                                <h3>Bienvenue, admin ! Vous êtes connecté.</h3>
+                                <% } %>
+                                <form action="/logout" method="POST">
+                                        <button type="submit">Se déconnecter</button>
+                                </form>
+                        <% } else { %>
                         <h2>Connexion</h2>
                         <%- include('partials/messages') %>
                         <form action="/login" method="POST">
@@ -24,6 +34,7 @@
                                 </div>
                                 <button type="submit">Se connecter</button>
                         </form>
+                        <% } %>
                 </section>
                 <section>
                         <h2>Documentation</h2>
