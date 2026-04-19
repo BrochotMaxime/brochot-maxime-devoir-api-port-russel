@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <% if (reservations && reservations.length > 0) { %>
+                        <table>
+                                <thead>
+                                        <tr>
+                                                <th>Catway</th>
+                                                <th>Client</th>
+                                                <th>Bateau</th>
+                                                <th>Date début</th>
+                                                <th>Date fin</th>
+                                                <th>Action</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <% reservations.forEach(reservation => { %>
+                                                <tr>
+                                                        <td><%= reservation.catwayNumber %></td>
+                                                        <td><%= reservation.clientName %></td>
+                                                        <td><%= reservation.boatName %></td>
+                                                        <td><%= new Date(reservation.startDate).toLocaleDateString('fr-FR') %></td>
+                                                        <td><%= new Date(reservation.endDate).toLocaleDateString('fr-FR') %></td>
+                                                        <td><a href="/reservations-page/<%= reservation._id %>">Voir le détail</a></td>
+                                                </tr>
+                                        <% }) %>
+                                </tbody>
+                        </table>
+                <% } else { %>
+                        <p>Aucune réservation disponible.</p>
+                <% } %>
+        </main>
+</body>
+</html>
