@@ -14,6 +14,10 @@
                         <p><strong>Créée le :</strong> <%= new Date(reservation.createdAt).toLocaleDateString('fr-FR') %></p>
                         <p><strong>Mise à jour le :</strong> <%= new Date(reservation.updatedAt).toLocaleDateString('fr-FR') %></p>
                 </section>
+                <p><a href="/reservations-page/<%= reservation._id %>/edit">Modifier cette réservation</a></p>
+                <form action="/reservations-page/<%= reservation._id %>/delete" method="POST">
+                        <button type="submit" onclick="return confirm('Supprimer cette réservation ?')">Supprimer</button>
+                </form>
                 <p><a href="/reservations-page">Retour à la liste des réservations</a></p>
         </main>
 </body>

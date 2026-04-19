@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <form action="/reservations-page" method="POST">
+                        <div>
+                                <label for="catwayNumber">Catway :</label>
+                                <select id="catwayNumber" name="catwayNumber" required>
+                                        <option value="">-- Choisir un catway --</option>
+                                        <% catways.forEach(catway => { %>
+                                                <option value="<%= catway.catwayNumber %>">
+                                                        <%= catway.catwayNumber %> - <%= catway.catwayType %>
+                                                </option>
+                                        <% }) %>
+                                </select>
+                        </div>
+                        <div>
+                                <label for="clientName">Client :</label>
+                                <input type="text" id="clientName" name="clientName" required>
+                        </div>
+                        <div>
+                                <label for="boatName">Bateau :</label>
+                                <input type="text" id="boatName" name="boatName" required>
+                        </div>
+                        <div>
+                                <label for="startDate">Date de début :</label>
+                                <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div>
+                                <label for="endDate">Date de fin :</label>
+                                <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                        <button type="submit">Créer la réservation</button>
+                </form>
+                <p><a href="/reservations-page">Retour à la liste</a></p>
+        </main>
+</body>
+</html>
