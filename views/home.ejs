@@ -17,9 +17,7 @@
                                 <% } else { %>
                                 <h3>Bienvenue, admin ! Vous êtes connecté.</h3>
                                 <% } %>
-                                <form action="/logout" method="POST">
-                                        <button type="submit">Se déconnecter</button>
-                                </form>
+                                <button type="submit"><a href="/logout">Déconnexion</a></button>
                         <% } else { %>
                         <h2>Connexion</h2>
                         <%- include('partials/messages') %>

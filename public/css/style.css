@@ -122,6 +122,11 @@ a {
         color: #0d3b66;
 }
 
+button a {
+        color: #fff;
+        text-decoration: none;
+}
+
 section p {
         margin-bottom: 0.5rem;
 }
