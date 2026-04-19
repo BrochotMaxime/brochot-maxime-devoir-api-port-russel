@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <% if (catways && catways.length > 0) { %>
+                        <table>
+                                <thead>
+                                        <tr>
+                                                <th>Numéro</th>
+                                                <th>Type</th>
+                                                <th>État</th>
+                                                <th>Action</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <% catways.forEach(catway => { %>
+                                                <tr>
+                                                        <td><%= catway.catwayNumber %></td>
+                                                        <td><%= catway.catwayType %></td>
+                                                        <td><%= catway.catwayState %></td>
+                                                        <td>
+                                                                <a href="/catways-page/<%= catway.catwayNumber %>">Voir le détail</a>
+                                                        </td>
+                                                </tr>
+                                        <% }) %>
+                                </tbody>
+                        </table>
+                <% } else { %>
+                        <p>Aucun catway disponible.</p>
+                <% } %>
+        </main>
+</body>
+</html>

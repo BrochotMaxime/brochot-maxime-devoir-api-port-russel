@@ -105,3 +105,11 @@ th {
 tr:nth-child(even) {
         background-color: #f9f9f9;
 }
+
+a {
+        color: #0d3b66;
+}
+
+section p {
+        margin-bottom: 0.5rem;
+}
