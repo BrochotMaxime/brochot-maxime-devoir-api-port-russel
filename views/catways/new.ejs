@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <form action="/catways-page" method="POST">
+                        <div>
+                                <label for="catwayNumber">Numéro :</label>
+                                <input type="number" id="catwayNumber" name="catwayNumber" min="1" required>
+                        </div>
+                        <div>
+                                <label for="catwayType">Type :</label>
+                                <select id="catwayType" name="catwayType" required>
+                                        <option value="">-- Choisir un type --</option>
+                                        <option value="long">long</option>
+                                        <option value="short">short</option>
+                                </select>
+                        </div>
+                        <div>
+                                <label for="catwayState">État :</label>
+                                <textarea id="catwayState" name="catwayState" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Créer le catway</button>
+                </form>
+                <p><a href="/catways-page">Retour à la liste</a></p>
+        </main>
+</body>
+</html>

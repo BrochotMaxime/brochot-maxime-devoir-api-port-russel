@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <form action="/catways-page/<%= catway.catwayNumber %>/update" method="POST">
+                        <div>
+                                <label>Numéro :</label>
+                                <input type="text" value="<%= catway.catwayNumber %>" disabled>
+                        </div>
+                        <div>
+                                <label>Type :</label>
+                                <input type="text" value="<%= catway.catwayType %>" disabled>
+                        </div>
+                        <div>
+                                <label for="catwayState">État :</label>
+                                <textarea id="catwayState" name="catwayState" rows="4" required><%= catway.catwayState %></textarea>
+                        </div>
+                        <button type="submit">Mettre à jour</button>
+                </form>
+                <p><a href="/catways-page/<%= catway.catwayNumber %>">Retour au détail</a></p>
+        </main>
+</body>
+</html>

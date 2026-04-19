@@ -51,8 +51,19 @@ section {
         margin-bottom: 2rem;
 }
 
+form {
+       margin-top: 1rem; 
+}
+
 form div {
         margin-bottom: 1rem;
+}
+
+textarea, select {
+        padding: 0.5rem;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
 }
 
 label {
@@ -71,6 +82,7 @@ input {
 
 button {
         padding: 0.5rem 1rem;
+        margin-top: 0.5rem;
         background-color: #0d3b66;
         color: #fff;
         border: none;
