@@ -4,6 +4,8 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./docs/swagger');
 
 const authRoutes = require('./routes/auth');
 const { isAuthenticated } = require('./middlewares/authMiddleware');
@@ -57,6 +59,7 @@ app.use('/', catwayViewRoutes);
 app.use('/catways', catwayRoutes);
 app.use('/', reservationViewRoutes);
 app.use('/', userViewRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* Routes de test */
 app.get('/', (req, res) => {
