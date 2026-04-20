@@ -12,6 +12,7 @@ const catwayRoutes = require('./routes/catways');
 const catwayViewRoutes = require('./routes/catwayViews');
 const Reservation = require('./models/reservation');
 const reservationViewRoutes = require('./routes/reservationViews');
+const userViewRoutes = require('./routes/userViews');
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.use('/users', userRoutes);
 app.use('/', catwayViewRoutes);
 app.use('/catways', catwayRoutes);
 app.use('/', reservationViewRoutes);
+app.use('/', userViewRoutes);
 
 /* Routes de test */
 app.get('/', (req, res) => {
