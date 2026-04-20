@@ -1,7 +1,15 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-
+/**
+ * Connecte un utilisateur en vérifiant ses informations d'identification et en créant une session.
+ * 
+ * @async
+ * @function login
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Redirige vers le tableau de bord si la connexion est réussie, sinon rend la page d'accueil avec un message d'erreur
+ */
 exports.login = async (req, res) => {
         try {
                 const { email, password } = req.body;
@@ -49,7 +57,14 @@ exports.login = async (req, res) => {
         }
 };
 
-
+/**
+ * Déconnecte un utilisateur et supprime sa session.
+ * 
+ * @function logout
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {void} - Redirige vers la page d'accueil après la déconnexion ou affiche une erreur en cas de problème
+ */
 exports.logout = (req, res) => {
         req.session.destroy((error) => {
                 if (error) {

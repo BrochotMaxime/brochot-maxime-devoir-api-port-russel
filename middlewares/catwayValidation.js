@@ -1,6 +1,11 @@
 const { body, param } = require('express-validator');
 
-
+/**
+ * Validation du paramètre :id pour les routes liées aux catways
+ * 
+ * @param {Array} catwayIdValidation 
+ * @returns {void}
+ */
 const catwayIdValidation = [
         param('id')
                 .notEmpty().withMessage("L'identifiant du catway est requis")
@@ -8,7 +13,12 @@ const catwayIdValidation = [
                 .toInt()
 ];
 
-
+/**
+ * Validation des champs nécessaires à la création d'un catway
+ * 
+ * @param {Array} createCatwayValidation
+ * @returns {void}
+ */
 const createCatwayValidation = [
         body('catwayNumber')
                 .notEmpty().withMessage('Le numéro du catway est requis')
@@ -22,7 +32,12 @@ const createCatwayValidation = [
                 .isLength({ min: 3, max: 500 }).withMessage("L'état du catway doit contenir entre 3 et 500 caractères")
 ];
 
-
+/**
+ * Validation des champs nécessaires à la mise à jour d'un catway
+ * 
+ * @param {Array} updateCatwayValidation
+ * @returns {void}
+ */
 const updateCatwayValidation = [
         body('catwayState').trim()
                 .notEmpty().withMessage("L'état du catway est requis")

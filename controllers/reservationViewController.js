@@ -1,7 +1,15 @@
 const Reservation = require('../models/Reservation');
 const Catway = require('../models/Catway');
 
-
+/**
+ * Récupère la page de liste des réservations
+ * 
+ * @async
+ * @function getReservationsPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page de liste des réservations ou une erreur en cas de problème
+ */
 exports.getReservationsPage = async (req, res) => {
         try {
                 const reservations = await Reservation.find().sort({ startDate: 1 });
@@ -16,7 +24,15 @@ exports.getReservationsPage = async (req, res) => {
         }
 };
 
-
+/**
+ * Récupère la page de détail d'une réservation
+ * 
+ * @async
+ * @function getReservationDetailPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page de détail de la réservation ou une erreur en cas de problème
+ */
 exports.getReservationDetailPage = async (req, res) => {
         try {
                 const reservation = await Reservation.findById(req.params.id);
@@ -35,7 +51,15 @@ exports.getReservationDetailPage = async (req, res) => {
         }
 };
 
-
+/**
+ * Récupère la page de création d'une réservation
+ * 
+ * @async
+ * @function getNewReservationPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page de création de la réservation ou une erreur en cas de problème
+ */
 exports.getNewReservationPage = async (req, res) => {
         try {
                 const catways = await Catway.find().sort({ catwayNumber: 1 });
@@ -50,8 +74,16 @@ exports.getNewReservationPage = async (req, res) => {
         }
 };
 
-
-exports.createReservationFromView = async (req, res) => {
+/**
+ * Crée une réservation
+ * 
+ * @async
+ * @function createReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la réservation créée ou une erreur en cas de problème
+ */
+exports.createReservation = async (req, res) => {
         try {
                 const { catwayNumber, clientName, boatName, startDate, endDate } = req.body;
 
@@ -89,12 +121,20 @@ exports.createReservationFromView = async (req, res) => {
 
                 res.redirect('/reservations-page');
         } catch (error) {
-                console.error('Erreur createReservationFromView :', error);
+                console.error('Erreur createReservation :', error);
                 res.status(500).send('Erreur lors de la création de la réservation');
         }
 };
 
-
+/**
+ * Récupère la page de modification d'une réservation
+ * 
+ * @async
+ * @function getEditReservationPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page de modification de la réservation ou une erreur en cas de problème
+ */
 exports.getEditReservationPage = async (req, res) => {
         try {
                 const reservation = await Reservation.findById(req.params.id);
@@ -115,8 +155,16 @@ exports.getEditReservationPage = async (req, res) => {
         }
 };
 
-
-exports.updateReservationFromView = async (req, res) => {
+/**
+ * Met à jour une réservation
+ * 
+ * @async
+ * @function updateReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la réservation mise à jour ou une erreur en cas de problème
+ */
+exports.updateReservation = async (req, res) => {
         try {
                 const { catwayNumber, clientName, boatName, startDate, endDate } = req.body;
 
@@ -161,13 +209,21 @@ exports.updateReservationFromView = async (req, res) => {
 
                 res.redirect(`/reservations-page/${reservation._id}`);
         } catch (error) {
-                console.error('Erreur updateReservationFromView :', error);
+                console.error('Erreur updateReservation :', error);
                 res.status(500).send('Erreur lors de la mise à jour de la réservation');
         }
 };
 
-
-exports.deleteReservationFromView = async (req, res) => {
+/**
+ * Supprime une réservation
+ * 
+ * @async
+ * @function deleteReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne un message de succès ou une erreur en cas de problème
+ */
+exports.deleteReservation = async (req, res) => {
         try {
                 const deletedReservation = await Reservation.findByIdAndDelete(req.params.id);
 
@@ -177,7 +233,7 @@ exports.deleteReservationFromView = async (req, res) => {
 
                 res.redirect('/reservations-page');
         } catch (error) {
-                console.error('Erreur deleteReservationFromView :', error);
+                console.error('Erreur deleteReservation :', error);
                 res.status(500).send('Erreur lors de la suppression de la réservation');
         }
 };

@@ -1,6 +1,11 @@
 const { body, param } = require('express-validator');
 
-
+/**
+ * Validation des champs nécessaires à la création d'un utilisateur
+ * 
+ * @param {Array} createUserValidation
+ * @returns {void}
+ */
 const createUserValidation = [
         body('username').trim()
                 .notEmpty().withMessage("Le nom d'utilisateur est requis")
@@ -14,7 +19,12 @@ const createUserValidation = [
                 .isLength({ min: 8 }).withMessage("Le mot de passe doit contenir au moins 8 caractères")
 ];
 
-
+/**
+ * Validation des champs nécessaires à la mise à jour d'un utilisateur
+ * 
+ * @param {Array} updateUserValidation
+ * @returns {void}
+ */
 const updateUserValidation = [
         body('username').trim()
                 .optional()
@@ -28,7 +38,12 @@ const updateUserValidation = [
                 .isLength({ min: 8 }).withMessage("Le mot de passe doit contenir au moins 8 caractères")
 ];
 
-
+/**
+ * Validation du paramètre :email pour les routes liées aux utilisateurs
+ * 
+ * @param {Array} emailParamValidation
+ * @returns {void}
+ */
 const emailParamValidation = [
         param('email').trim()
                 .isEmail().withMessage("L'email dans l'URL est invalide")

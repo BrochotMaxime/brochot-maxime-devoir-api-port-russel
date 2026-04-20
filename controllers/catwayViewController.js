@@ -1,6 +1,14 @@
 const Catway = require('../models/Catway');
 
-
+/**
+ * Affiche la page listant les catways
+ * 
+ * @async
+ * @function getCatwaysPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page avec la liste des catways ou une erreur en cas de problème
+ */
 exports.getCatwaysPage = async (req, res) => {
         try {
                 const catways = await Catway.find().sort({ catwayNumber: 1 });
@@ -15,7 +23,15 @@ exports.getCatwaysPage = async (req, res) => {
         }
 };
 
-
+/**
+ * Affiche la page de détail d'un catway
+ * 
+ * @async
+ * @function getCatwayDetailPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page avec les détails du catway ou une erreur en cas de problème
+ */
 exports.getCatwayDetailPage = async (req, res) => {
         try {
                 const catway = await Catway.findOne({
@@ -36,15 +52,30 @@ exports.getCatwayDetailPage = async (req, res) => {
         }
 };
 
-
+/**
+ * Affiche la page de création d'un nouveau catway
+ * 
+ * @function getNewCatwayPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {void} - Retourne la page de création d'un catway
+ */
 exports.getNewCatwayPage = (req, res) => {
         res.render('catways/new', {
                 title: 'Créer un catway'
         });
 };
 
-
-exports.createCatwayFromView = async (req, res) => {
+/**
+ * Crée un nouveau catway à partir des données du formulaire
+ * 
+ * @async
+ * @function createCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne le catway créé ou une erreur en cas de problème
+ */
+exports.createCatway = async (req, res) => {
         try {
                 const { catwayNumber, catwayType, catwayState } = req.body;
 
@@ -68,12 +99,20 @@ exports.createCatwayFromView = async (req, res) => {
 
                 res.redirect('/catways-page');
         } catch (error) {
-                console.error('Erreur createCatwayFromView :', error);
+                console.error('Erreur createCatway :', error);
                 res.status(500).send('Erreur lors de la création du catway');
         }
 };
 
-
+/**
+ * Affiche la page de modification d'un catway
+ * 
+ * @async
+ * @function getEditCatwayPage
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la page de modification du catway ou une erreur en cas de problème
+ */
 exports.getEditCatwayPage = async (req, res) => {
         try {
                 const catway = await Catway.findOne({
@@ -94,8 +133,16 @@ exports.getEditCatwayPage = async (req, res) => {
         }
 };
 
-
-exports.updateCatwayFromView = async (req, res) => {
+/**
+ * Met à jour un catway
+ * 
+ * @async
+ * @function updateCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne le catway mis à jour ou une erreur en cas de problème
+ */
+exports.updateCatway = async (req, res) => {
         try {
                 const { catwayState } = req.body;
 
@@ -116,13 +163,21 @@ exports.updateCatwayFromView = async (req, res) => {
 
                 res.redirect(`/catways-page/${catway.catwayNumber}`);
         } catch (error) {
-                console.error('Erreur updateCatwayFromView :', error);
+                console.error('Erreur updateCatway :', error);
                 res.status(500).send('Erreur lors de la mise à jour du catway');
         }
 };
 
-
-exports.deleteCatwayFromView = async (req, res) => {
+/**
+ * Supprime un catway
+ * 
+ * @async
+ * @function deleteCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne un message de succès ou une erreur en cas de problème
+ */
+exports.deleteCatway = async (req, res) => {
         try {
                 const deletedCatway = await Catway.findOneAndDelete({
                         catwayNumber: Number(req.params.id)
@@ -134,7 +189,7 @@ exports.deleteCatwayFromView = async (req, res) => {
 
                 res.redirect('/catways-page');
         } catch (error) {
-                console.error('Erreur deleteCatwayFromView :', error);
+                console.error('Erreur deleteCatway :', error);
                 res.status(500).send('Erreur lors de la suppression du catway');
         }
 };

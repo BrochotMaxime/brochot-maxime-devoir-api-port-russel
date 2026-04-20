@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * Schéma pour les catways
+ * 
+ * @typedef {Object} Catway
+ * @property {number} catwayNumber - Le numéro du catway (unique, entier positif)
+ * @property {string} catwayType - Le type du catway ("long" ou "short")
+ * @property {string} catwayState - L'état du catway (entre 3 et 500 caractères)
+ */
 const Catway = new Schema({
         catwayNumber: {
                 type: Number,

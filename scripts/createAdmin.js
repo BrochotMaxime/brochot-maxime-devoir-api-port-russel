@@ -6,6 +6,14 @@ const bcrypt = require('bcrypt');
 const connectDB = require('../config/db');
 const User = require('../models/user');
 
+
+/**
+ * Crée un utilisateur administrateur si celui-ci n'existe pas déjà dans la base de données.
+ * 
+ * @async
+ * @function createAdmin
+ * @returns {Promise<void>} - Retourne une promesse qui se résout lorsque l'utilisateur admin est créé ou existe déjà, ou rejette en cas d'erreur
+ */
 const createAdmin = async () => {
         try {
                 await connectDB();
