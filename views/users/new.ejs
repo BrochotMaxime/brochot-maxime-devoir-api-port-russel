@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <form action="/users-page" method="POST">
+                        <div>
+                                <label for="username">Nom d'utilisateur :</label>
+                                <input type="text" id="username" name="username" required>
+                        </div>
+                        <div>
+                                <label for="email">Email :</label>
+                                <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                                <label for="password">Mot de passe :</label>
+                                <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit">Créer l'utilisateur</button>
+                </form>
+                <p><a href="/users-page">Retour à la liste</a></p>
+        </main>
+</body>
+</html>

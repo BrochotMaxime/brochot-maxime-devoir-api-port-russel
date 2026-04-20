@@ -5,6 +5,11 @@ const { isAuthenticated } = require('../middlewares/authMiddleware');
 const userViewController = require('../controllers/userViewController');
 
 router.get('/users-page', isAuthenticated, userViewController.getUsersPage);
+router.get('/users-page/new', isAuthenticated, userViewController.getNewUserPage);
+router.post('/users-page', isAuthenticated, userViewController.createUserFromView);
+router.get('/users-page/:email/edit', isAuthenticated, userViewController.getEditUserPage);
+router.post('/users-page/:email/update', isAuthenticated, userViewController.updateUserFromView);
+router.post('/users-page/:email/delete', isAuthenticated, userViewController.deleteUserFromView);
 router.get('/users-page/:email', isAuthenticated, userViewController.getUserDetailPage);
 
 module.exports = router;

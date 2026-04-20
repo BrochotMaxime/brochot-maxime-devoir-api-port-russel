@@ -11,6 +11,10 @@
                         <p><strong>Créé le :</strong> <%= new Date(viewedUser.createdAt).toLocaleDateString('fr-FR') %></p>
                         <p><strong>Mis à jour le :</strong> <%= new Date(viewedUser.updatedAt).toLocaleDateString('fr-FR') %></p>
                 </section>
+                <p><a href="/users-page/<%= viewedUser.email %>/edit">Modifier cet utilisateur</a></p>
+                <form action="/users-page/<%= viewedUser.email %>/delete" method="POST">
+                        <button type="submit" onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</button>
+                </form>
                 <p><a href="/users-page">Retour à la liste des utilisateurs</a></p>
         </main>
 </body>
