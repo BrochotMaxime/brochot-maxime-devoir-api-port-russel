@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <form action="/users-page/<%= viewedUser.email %>/update" method="POST">
+                        <div>
+                                <label for="username">Nom d'utilisateur :</label>
+                                <input type="text" id="username" name="username" value="<%= viewedUser.username %>" required>
+                        </div>
+                        <div>
+                                <label for="email">Email :</label>
+                                <input type="email" id="email" name="email" value="<%= viewedUser.email %>" required>
+                        </div>
+                        <div>
+                                <label for="password">Nouveau mot de passe :</label>
+                                <input type="password" id="password" name="password">
+                                <small>Laisser vide pour conserver le mot de passe actuel.</small>
+                        </div>
+                        <button type="submit">Mettre à jour l'utilisateur</button>
+                </form>
+                <p><a href="/users-page/<%= viewedUser.email %>">Retour au détail</a></p>
+        </main>
+</body>
+</html>

@@ -5,6 +5,7 @@
         <%- include('../partials/nav') %>
         <main>
                 <h1><%= title %></h1>
+                <p><a href="/users-page/new">Créer un nouvel utilisateur</a></p>
                 <% if (users && users.length > 0) { %>
                         <table>
                                 <thead>
@@ -22,7 +23,13 @@
                                                         <td><%= userItem.email %></td>
                                                         <td><%= new Date(userItem.createdAt).toLocaleDateString('fr-FR') %></td>
                                                         <td>
-                                                                <a href="/users-page/<%= encodeURIComponent(userItem.email) %>">Voir le détail</a>
+                                                                <a href="/users-page/<%= userItem.email %>">Détail</a>
+                                                                |
+                                                                <a href="/users-page/<%= userItem.email %>/edit">Modifier</a>
+                                                                |
+                                                                <form action="/users-page/<%= userItem.email %>/delete" method="POST" ">
+                                                                        <button type="submit" onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</button>
+                                                                </form>
                                                         </td>
                                                 </tr>
                                         <% }) %>
