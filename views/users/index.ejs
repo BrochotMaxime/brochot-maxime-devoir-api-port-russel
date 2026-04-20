@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <% if (users && users.length > 0) { %>
+                        <table>
+                                <thead>
+                                        <tr>
+                                                <th>Nom d'utilisateur</th>
+                                                <th>Email</th>
+                                                <th>Créé le</th>
+                                                <th>Action</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <% users.forEach(userItem => { %>
+                                                <tr>
+                                                        <td><%= userItem.username %></td>
+                                                        <td><%= userItem.email %></td>
+                                                        <td><%= new Date(userItem.createdAt).toLocaleDateString('fr-FR') %></td>
+                                                        <td>
+                                                                <a href="/users-page/<%= encodeURIComponent(userItem.email) %>">Voir le détail</a>
+                                                        </td>
+                                                </tr>
+                                        <% }) %>
+                                </tbody>
+                        </table>
+                <% } else { %>
+                        <p>Aucun utilisateur disponible.</p>
+                <% } %>
+        </main>
+</body>
+</html>

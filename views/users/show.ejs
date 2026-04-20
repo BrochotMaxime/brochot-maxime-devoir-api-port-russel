@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%- include('../partials/head') %>
+<body>
+        <%- include('../partials/nav') %>
+        <main>
+                <h1><%= title %></h1>
+                <section>
+                        <p><strong>Nom d'utilisateur :</strong> <%= viewedUser.username %></p>
+                        <p><strong>Email :</strong> <%= viewedUser.email %></p>
+                        <p><strong>Créé le :</strong> <%= new Date(viewedUser.createdAt).toLocaleDateString('fr-FR') %></p>
+                        <p><strong>Mis à jour le :</strong> <%= new Date(viewedUser.updatedAt).toLocaleDateString('fr-FR') %></p>
+                </section>
+                <p><a href="/users-page">Retour à la liste des utilisateurs</a></p>
+        </main>
+</body>
+</html>
