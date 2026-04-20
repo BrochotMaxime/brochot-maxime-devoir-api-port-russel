@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * Schéma pour les réservations
+ * 
+ * @typedef {Object} Reservation
+ * @property {number} catwayNumber - Le numéro du catway réservé (entier positif)
+ * @property {string} clientName - Le nom du client (entre 2 et 100 caractères)
+ * @property {string} boatName - Le nom du bateau (entre 2 et 100 caractères)
+ * @property {Date} startDate - La date de début de la réservation
+ * @property {Date} endDate - La date de fin de la réservation (doit être postérieure à la date de début)
+ */
 const Reservation = new Schema({
         catwayNumber: {
                 type: Number,

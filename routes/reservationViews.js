@@ -6,10 +6,10 @@ const reservationViewController = require('../controllers/reservationViewControl
 
 router.get('/reservations-page', isAuthenticated, reservationViewController.getReservationsPage);
 router.get('/reservations-page/new', isAuthenticated, reservationViewController.getNewReservationPage);
-router.post('/reservations-page', isAuthenticated, reservationViewController.createReservationFromView);
+router.post('/reservations-page', isAuthenticated, reservationViewController.createReservation);
 router.get('/reservations-page/:id/edit', isAuthenticated, reservationViewController.getEditReservationPage);
-router.post('/reservations-page/:id/update', isAuthenticated, reservationViewController.updateReservationFromView);
-router.post('/reservations-page/:id/delete', isAuthenticated, reservationViewController.deleteReservationFromView);
+router.post('/reservations-page/:id/update', isAuthenticated, reservationViewController.updateReservation);
+router.post('/reservations-page/:id/delete', isAuthenticated, reservationViewController.deleteReservation);
 router.get('/reservations-page/:id', isAuthenticated, reservationViewController.getReservationDetailPage);
 
 module.exports = router;

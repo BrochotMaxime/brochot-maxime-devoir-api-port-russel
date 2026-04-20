@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * Schéma pour les utilisateurs
+ *
+ * @typedef {Object} User
+ * @property {string} username - Le nom d'utilisateur (entre 3 et 50 caractères)
+ * @property {string} email - L'adresse e-mail (doit être unique et valide)
+ * @property {string} password - Le mot de passe (doit contenir au moins 8 caractères)
+ */
 const User = new Schema({
         username: {
                 type: String,
@@ -24,7 +32,7 @@ const User = new Schema({
                 select: false
         }
         }, {
-        timestamps: true
+                timestamps: true
         }
 );
 

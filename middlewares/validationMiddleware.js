@@ -1,6 +1,13 @@
 const { validationResult } = require('express-validator');
 
-
+/**
+ * Gère les erreurs de validation
+ * 
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @param {*} next - Fonction pour passer au middleware suivant
+ * @returns {void}
+ */
 const handleValidationErrors = (req, res, next) => {
         const errors = validationResult(req);
 

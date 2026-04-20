@@ -1,6 +1,15 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
+/**
+ * Récupère tous les utilisateurs
+ * 
+ * @async
+ * @function getAllUsers
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la liste des utilisateurs ou une erreur en cas de problème
+ */
 exports.getAllUsers = async (req, res) => {
         try {
                 const users = await User.find().select('-password').sort({ username: 1 });
@@ -11,7 +20,15 @@ exports.getAllUsers = async (req, res) => {
         }
 };
 
-
+/**
+ * Récupère un utilisateur par son adresse email
+ * 
+ * @async
+ * @function getUserByEmail
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne l'utilisateur trouvé ou une erreur en cas de problème
+ */
 exports.getUserByEmail = async (req, res) => {
         try {
                 const user = await User.findOne({
@@ -29,7 +46,15 @@ exports.getUserByEmail = async (req, res) => {
         }
 };
 
-
+/**
+ * Crée un nouvel utilisateur
+ * 
+ * @async
+ * @function createUser
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne l'utilisateur créé ou une erreur en cas de problème
+ */
 exports.createUser = async (req, res) => {
         try {
                 const { username, email, password } = req.body;
@@ -62,7 +87,15 @@ exports.createUser = async (req, res) => {
         }
 };
 
-
+/**
+ * Met à jour un utilisateur
+ * 
+ * @async
+ * @function updateUser
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne l'utilisateur mis à jour ou une erreur en cas de problème
+ */
 exports.updateUser = async (req, res) => {
         try {
                 const { username, email, password } = req.body;
@@ -114,7 +147,15 @@ exports.updateUser = async (req, res) => {
         }
 };
 
-
+/**
+ * Supprime un utilisateur
+ * 
+ * @async
+ * @function deleteUser
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne un message de succès ou une erreur en cas de problème
+ */
 exports.deleteUser = async (req, res) => {
         try {
                 const deletedUser = await User.findOneAndDelete({

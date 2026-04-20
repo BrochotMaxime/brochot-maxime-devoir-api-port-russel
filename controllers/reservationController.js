@@ -1,7 +1,15 @@
 const Reservation = require('../models/Reservation');
 const Catway = require('../models/Catway');
 
-
+/**
+ * Récupère toutes les réservations pour un catway spécifique
+ * 
+ * @async
+ * @function getReservationsByCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la liste des réservations pour le catway ou une erreur en cas de problème
+ */
 exports.getReservationsByCatway = async (req, res) => {
         try {
                 const catwayNumber = Number(req.params.id);
@@ -15,7 +23,15 @@ exports.getReservationsByCatway = async (req, res) => {
         }
 };
 
-
+/**
+ * Récupère une réservation spécifique par son ID
+ * 
+ * @async
+ * @function getReservationById
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la réservation trouvée ou une erreur en cas de problème
+ */
 exports.getReservationById = async (req, res) => {
         try {
                 const catwayNumber = Number(req.params.id);
@@ -37,7 +53,15 @@ exports.getReservationById = async (req, res) => {
         }
 };
 
-
+/**
+ * Crée une nouvelle réservation
+ * 
+ * @async
+ * @function createReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la réservation créée ou une erreur en cas de problème
+ */
 exports.createReservation = async (req, res) => {
         try {
                 const catwayNumber = Number(req.params.id);
@@ -79,7 +103,15 @@ exports.createReservation = async (req, res) => {
         }
 };
 
-
+/**
+ * Met à jour une réservation
+ * 
+ * @async
+ * @function updateReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la réservation mise à jour ou une erreur en cas de problème
+ */
 exports.updateReservation = async (req, res) => {
         try {
                 const catwayNumber = Number(req.params.id);
@@ -144,7 +176,15 @@ exports.updateReservation = async (req, res) => {
         }
 };
 
-
+/**
+ * Supprime une réservation
+ * 
+ * @async
+ * @function deleteReservation
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne un message de succès ou une erreur en cas de problème
+ */
 exports.deleteReservation = async (req, res) => {
         try {
                 const catwayNumber = Number(req.params.id);

@@ -1,6 +1,11 @@
 const { body, param } = require('express-validator');
 
-
+/**
+ * Validation du paramètre :id pour les routes liées aux reservations
+ * 
+ * @param {Array} reservationIdParamValidation
+ * @returns {void}
+ */
 const catwayIdParamValidation = [
         param('id')
                 .notEmpty().withMessage("L'identifiant du catway est requis")
@@ -8,14 +13,24 @@ const catwayIdParamValidation = [
                 .toInt()
 ];
 
-
+/**
+ * Validation du paramètre :reservationId pour les routes liées aux reservations
+ * 
+ * @param {Array} reservationIdParamValidation
+ * @returns {void}
+ */
 const reservationIdParamValidation = [
         param('reservationId')
                 .notEmpty().withMessage("L'identifiant de la réservation est requis")
                 .isMongoId().withMessage("L'identifiant de la réservation est invalide")
 ];
 
-
+/**
+ * Validation des champs nécessaires à la création d'une réservation
+ * 
+ * @param {Array} createReservationValidation
+ * @returns {void}
+ */
 const createReservationValidation = [
         body('clientName').trim()
                 .notEmpty().withMessage('Le nom du client est requis')
@@ -38,7 +53,12 @@ const createReservationValidation = [
                 .withMessage('La date de fin doit être postérieure à la date de début')
 ];
 
-
+/**
+ * Validation des champs nécessaires à la mise à jour d'une réservation
+ * 
+ * @param {Array} updateReservationValidation
+ * @returns {void}
+ */
 const updateReservationValidation = [
         body('clientName').trim()
                 .optional()

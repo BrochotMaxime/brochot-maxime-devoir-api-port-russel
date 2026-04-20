@@ -1,6 +1,14 @@
 const Catway = require('../models/catway');
 
-
+/**
+ * Récupère tous les catways
+ * 
+ * @async
+ * @function getAllCatways
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne la liste des catways ou une erreur en cas de problème
+ */
 exports.getAllCatways = async (req, res) => {
         try {
                 const catways = await Catway.find().sort({ catwayNumber: 1 });
@@ -11,7 +19,15 @@ exports.getAllCatways = async (req, res) => {
         }
 };
 
-
+/**
+ * Récupère un catway par son ID
+ * 
+ * @async
+ * @function getCatwayById
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne le catway trouvé ou une erreur en cas de problème
+ */
 exports.getCatwayById = async (req, res) => {
         try {
                 const catway = await Catway.findOne({
@@ -29,7 +45,15 @@ exports.getCatwayById = async (req, res) => {
         }
 };
 
-
+/**
+ * Crée un nouveau catway
+ * 
+ * @async
+ * @function createCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne le catway créé ou une erreur en cas de problème
+ */
 exports.createCatway = async (req, res) => {
         try {
                 const { catwayNumber, catwayType, catwayState } = req.body;
@@ -60,7 +84,15 @@ exports.createCatway = async (req, res) => {
         }
 };
 
-
+/**
+ * Met à jour uniquement l'état d'un catway existant
+ * 
+ * @async
+ * @function updateCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne le catway mis à jour ou une erreur en cas de problème
+ */
 exports.updateCatway = async (req, res) => {
         try {
                 const { catwayState } = req.body;
@@ -86,7 +118,15 @@ exports.updateCatway = async (req, res) => {
         }
 };
 
-
+/**
+ * Supprime un catway existant par son numéro
+ * 
+ * @async
+ * @function deleteCatway
+ * @param {*} req - Objet de requête Express
+ * @param {*} res - Objet de réponse Express
+ * @returns {Promise<void>} - Retourne un message de succès ou une erreur en cas de problème
+ */
 exports.deleteCatway = async (req, res) => {
         try {
                 const deletedCatway = await Catway.findOneAndDelete({
