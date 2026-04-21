@@ -9,8 +9,6 @@
                         <p><strong>Numéro :</strong> <%= catway.catwayNumber %></p>
                         <p><strong>Type :</strong> <%= catway.catwayType %></p>
                         <p><strong>État :</strong> <%= catway.catwayState %></p>
-                        <p><strong>Créé le :</strong> <%= new Date(catway.createdAt).toLocaleDateString('fr-FR') %></p>
-                        <p><strong>Mis à jour le :</strong> <%= new Date(catway.updatedAt).toLocaleDateString('fr-FR') %></p>
                 </section>
                 <p><a href="/catways-page/<%= catway.catwayNumber %>/edit">Modifier ce catway</a></p>
                 <form action="/catways-page/<%= catway.catwayNumber %>/delete" method="POST">

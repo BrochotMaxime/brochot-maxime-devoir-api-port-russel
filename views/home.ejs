@@ -12,8 +12,8 @@
                 </section>
                 <section>
                         <% if (user) { %>
-                                <% if (user.name) { %>
-                                <h3>Bienvenue, <%= user.name %> ! Vous êtes connecté.</h3>
+                                <% if (user.username) { %>
+                                <h3>Bienvenue, <%= user.username %> ! Vous êtes connecté.</h3>
                                 <% } else { %>
                                 <h3>Bienvenue, admin ! Vous êtes connecté.</h3>
                                 <% } %>
