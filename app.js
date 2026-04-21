@@ -43,7 +43,7 @@ app.use(session({
         })
 );
 
-/* Middleware pour rendre l'utilisateur disponible dans toutes les vues */
+/* Middleware pour rendre l'utilisateur disponible dans toutes les pages EJS */
 app.use((req, res, next) => {
         res.locals.user = req.session.user || null;
         res.locals.currentDate = new Date().toLocaleDateString('fr-FR');
