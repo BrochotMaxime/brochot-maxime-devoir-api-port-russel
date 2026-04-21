@@ -1,4 +1,4 @@
-const Catway = require('../models/Catway');
+const Catway = require('../models/catway');
 
 /**
  * Affiche la page listant les catways

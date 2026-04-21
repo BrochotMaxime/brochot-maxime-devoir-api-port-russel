@@ -1,5 +1,5 @@
 const Reservation = require('../models/Reservation');
-const Catway = require('../models/Catway');
+const Catway = require('../models/catway');
 
 /**
  * Récupère toutes les réservations pour un catway spécifique

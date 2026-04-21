@@ -1,5 +1,5 @@
-const Reservation = require('../models/Reservation');
-const Catway = require('../models/Catway');
+const Reservation = require('../models/reservation');
+const Catway = require('../models/catway');
 
 /**
  * Récupère la page de liste des réservations
